@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 public class Mahasiswa extends javax.swing.JFrame {
 
     /**
-     * Creates new
+     * Creates new form
      */
     public Mahasiswa() {
         initComponents();
