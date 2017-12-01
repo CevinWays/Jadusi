@@ -109,7 +109,7 @@ public class LoginKbk extends javax.swing.JFrame {
         String nid = "1234";
         String pass = "admin";
         if (txt_nid.getText().equals(nid) && txt_password.getText().equals(pass)) {
-            JOptionPane.showMessageDialog(null, "Selamat Datang");
+            JOptionPane.showMessageDialog(null, "Selamat Datang kbk");
             Kbk l_kbk = new Kbk();
             l_kbk.setVisible(true);
         } else {

@@ -237,7 +237,7 @@ public class Mahasiswa extends javax.swing.JFrame {
         //Menambahkan data ke database db_judul
         try {
             String sql = "INSERT INTO tb_daftar VALUES ('" + txt_nim.getText() + "','" + txt_nama.getText() + "','"
-            + jComboBox1.getSelectedItem() + "','" + txt_judul.getText() + "','')"; //memasukkan data dari text field ke dalam tabel tb_daftar mysql
+                    + jComboBox1.getSelectedItem() + "','" + txt_judul.getText() + "','')"; //memasukkan data dari text field ke dalam tabel tb_daftar mysql
             java.sql.Connection koneksi = (Connection) Koneksi.connDB(); //buat koneksi dengan database
             java.sql.PreparedStatement pst = koneksi.prepareStatement(sql); //statement
             pst.execute();
