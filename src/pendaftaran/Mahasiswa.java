@@ -33,11 +33,11 @@ public class Mahasiswa extends javax.swing.JFrame {
         //menampilkan data database ke dalam tabel
         try {
             int no = 1;
-            String sql = "SELECT * FROM tb_mhs";
+            String sql = "SELECT * FROM tb_daftar";
             java.sql.Connection koneksi = (Connection) Koneksi.connDB();
             java.sql.Statement stm = koneksi.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);
-            while (res.next()) { //result dimasukkan ke dalam tabel di java sesuai dengan index kolom tabel di mysql tb_mhs
+            while (res.next()) { //result dimasukkan ke dalam tabel di java sesuai dengan index kolom tabel di mysql tb_daftar
                 model.addRow(new Object[]{no++, res.getString(1), res.getString(2), res.getString(3), res.getString(4)});
             }
             jTable1.setModel(model);
@@ -74,16 +74,16 @@ public class Mahasiswa extends javax.swing.JFrame {
         txt_nama = new javax.swing.JTextField();
         txt_judul = new javax.swing.JTextField();
         ButtonTambah = new javax.swing.JButton();
-        ButtonUbah = new javax.swing.JButton();
-        ButtonHapus = new javax.swing.JButton();
-        ButtonReset = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        ButtonHapus = new javax.swing.JButton();
+        ButtonReset = new javax.swing.JButton();
+        ButtonUbah = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pendaftaran Judul", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         jLabel1.setText("NIM");
 
@@ -97,27 +97,6 @@ public class Mahasiswa extends javax.swing.JFrame {
         ButtonTambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButtonTambahActionPerformed(evt);
-            }
-        });
-
-        ButtonUbah.setText("Ubah");
-        ButtonUbah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonUbahActionPerformed(evt);
-            }
-        });
-
-        ButtonHapus.setText("Hapus");
-        ButtonHapus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonHapusActionPerformed(evt);
-            }
-        });
-
-        ButtonReset.setText("Reset");
-        ButtonReset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonResetActionPerformed(evt);
             }
         });
 
@@ -144,16 +123,10 @@ public class Mahasiswa extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_judul)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(ButtonTambah)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ButtonUbah)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ButtonHapus)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ButtonReset)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ButtonTambah)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 82, Short.MAX_VALUE)))))
                 .addGap(14, 14, 14))
         );
         jPanel1Layout.setVerticalGroup(
@@ -175,13 +148,9 @@ public class Mahasiswa extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txt_judul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ButtonTambah)
-                    .addComponent(ButtonUbah)
-                    .addComponent(ButtonHapus)
-                    .addComponent(ButtonReset))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ButtonTambah)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -202,15 +171,46 @@ public class Mahasiswa extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        ButtonHapus.setText("Hapus");
+        ButtonHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonHapusActionPerformed(evt);
+            }
+        });
+
+        ButtonReset.setText("Reset");
+        ButtonReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonResetActionPerformed(evt);
+            }
+        });
+
+        ButtonUbah.setText("Ubah");
+        ButtonUbah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonUbahActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(ButtonUbah)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ButtonHapus)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ButtonReset)
+                        .addGap(6, 6, 6)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -220,7 +220,12 @@ public class Mahasiswa extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(139, 139, 139))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButtonUbah)
+                    .addComponent(ButtonHapus)
+                    .addComponent(ButtonReset))
+                .addGap(117, 117, 117))
         );
 
         pack();
@@ -231,8 +236,8 @@ public class Mahasiswa extends javax.swing.JFrame {
 
         //Menambahkan data ke database db_judul
         try {
-            String sql = "INSERT INTO tb_mhs VALUES ('" + txt_nim.getText() + "','" + txt_nama.getText() + "','"
-            + jComboBox1.getSelectedItem() + "','" + txt_judul.getText() + "')"; //memasukkan data dari text field ke dalam tabel tb_mhs mysql
+            String sql = "INSERT INTO tb_daftar VALUES ('" + txt_nim.getText() + "','" + txt_nama.getText() + "','"
+            + jComboBox1.getSelectedItem() + "','" + txt_judul.getText() + "','')"; //memasukkan data dari text field ke dalam tabel tb_daftar mysql
             java.sql.Connection koneksi = (Connection) Koneksi.connDB(); //buat koneksi dengan database
             java.sql.PreparedStatement pst = koneksi.prepareStatement(sql); //statement
             pst.execute();
@@ -248,7 +253,7 @@ public class Mahasiswa extends javax.swing.JFrame {
         // TODO add your handling code here:
         //Edit data tabel mhs
         try {
-            String sql ="UPDATE tb_mhs SET nim = '"+txt_nim.getText()+"', nama = '"+txt_nama.getText()+"', jurusan = '"+jComboBox1.getSelectedItem()+"',judul = '"
+            String sql ="UPDATE tb_daftar SET nim = '"+txt_nim.getText()+"', nama = '"+txt_nama.getText()+"', jurusan = '"+jComboBox1.getSelectedItem()+"',judul = '"
             +txt_judul.getText()+"' WHERE nim = '"+txt_nim.getText()+"'";
             java.sql.Connection koneksi = (Connection) Koneksi.connDB(); //buat koneksi dengan database
             java.sql.PreparedStatement pst = koneksi.prepareStatement(sql); //statement
@@ -265,7 +270,7 @@ public class Mahasiswa extends javax.swing.JFrame {
         // TODO add your handling code here:
         //hapus data pada tabel di java dan mysql
         try {
-            String sql ="DELETE FROM tb_mhs WHERE nim='"+txt_nim.getText()+"'";
+            String sql ="DELETE FROM tb_daftar WHERE nim='"+txt_nim.getText()+"'";
             java.sql.Connection koneksi = (Connection) Koneksi.connDB(); //buat koneksi dengan database
             java.sql.PreparedStatement pst = koneksi.prepareStatement(sql); //statement
             pst.execute();
