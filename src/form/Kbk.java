@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pendaftaran;
+package form;
 
 /**
  *
@@ -11,9 +11,6 @@ package pendaftaran;
  */
 public class Kbk extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Kbk
-     */
     public Kbk() {
         initComponents();
     }

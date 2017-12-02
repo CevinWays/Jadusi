@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pendaftaran;
+package form;
 
+import config.Koneksi;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 
@@ -130,7 +131,7 @@ public class LoginMhs extends javax.swing.JFrame {
             if (res.next()) {
                 if(txt_nim.getText().equals(res.getString("nim")) && txt_password.getText().equals(res.getString("password"))){
                     JOptionPane.showMessageDialog(null, "Selamat Datang");
-                    Mahasiswa l_mhs = new Mahasiswa();
+                    FormMahasiswa l_mhs = new FormMahasiswa();
                     l_mhs.setVisible(true);
                 }
             } else {

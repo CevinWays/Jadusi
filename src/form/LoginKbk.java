@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pendaftaran;
+package form;
 
+import form.Kbk;
 import javax.swing.JOptionPane;
 
 /**
