@@ -125,7 +125,7 @@ public class LoginMhs extends javax.swing.JFrame {
         try {
             String sql = "SELECT * FROM tb_mhs WHERE nim='" + txt_nim.getText() + "'AND password='"
             + txt_password.getText() + "'"; //cek apakah data nim dan password sesuai
-            java.sql.Connection koneksi = (Connection) Koneksi.connDB();
+            java.sql.Connection koneksi = (Connection) Koneksi.getConnection();
             java.sql.Statement stm = koneksi.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);
             if (res.next()) {

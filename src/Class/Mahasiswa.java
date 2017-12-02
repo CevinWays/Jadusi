@@ -6,6 +6,7 @@ public class Mahasiswa extends Manusia{
     private String kelas;
     private String jurusan;
     private String judul;
+    private String status;
 
     public void setNim(String nim) {
         this.nim = nim;
@@ -39,5 +40,12 @@ public class Mahasiswa extends Manusia{
         return judul;
     }
     
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
     
 }

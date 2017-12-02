@@ -26,10 +26,6 @@ public class FormMahasiswa extends javax.swing.JFrame {
     private void loadtable() {
         List<Mahasiswa> mahasiswa = mahasis.getmhsMahasiswa();
         tablemhs.setData(mahasiswa);
-
-        jComboBox1.addItem("Teknik Informatika");
-        jComboBox1.addItem("Teknik Sipil");
-        jComboBox1.addItem("Sistem Informasi");
     }
 
     private boolean validasiInput() {
@@ -89,6 +85,8 @@ public class FormMahasiswa extends javax.swing.JFrame {
             }
         });
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Teknik Informatika", "Teknik Sipil", "Sistem Informasi" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -112,10 +110,9 @@ public class FormMahasiswa extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_judul)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ButtonTambah)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 82, Short.MAX_VALUE)))))
+                                .addComponent(ButtonTambah)
+                                .addGap(0, 181, Short.MAX_VALUE))
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(14, 14, 14))
         );
         jPanel1Layout.setVerticalGroup(
@@ -236,12 +233,13 @@ public class FormMahasiswa extends javax.swing.JFrame {
             String nama = txt_nama.getText();
             String jurusan = jComboBox1.getSelectedItem().toString();
             String judul = txt_judul.getText();
-
+            
             Mahasiswa mhs = new Mahasiswa();
             mhs.setNim(nim);
             mhs.setNama(nama);
             mhs.setJurusan(jurusan);
             mhs.setJudul(judul);
+            mhs.setStatus("Unapproved");
             mahasis.insertMhs(mhs);
             tablemhs.insertMhs(mhs);
             loadtable();
@@ -261,11 +259,13 @@ public class FormMahasiswa extends javax.swing.JFrame {
                 String nama = txt_nama.getText();
                 String jurusan = jComboBox1.getSelectedItem().toString();
                 String judul = txt_judul.getText();
+                String status = mhs.getStatus();
 
                 mhs.setNim(nim);
                 mhs.setNama(nama);
                 mhs.setJurusan(jurusan);
                 mhs.setJudul(judul);
+                mhs.setStatus(status);
 
                 mahasis.updateMhs(mhs);
                 tablemhs.updateMhs(index, mhs);

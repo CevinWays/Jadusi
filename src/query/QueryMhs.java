@@ -24,13 +24,14 @@ public class QueryMhs implements iMahasiswa {
     @Override
     public void insertMhs(Mahasiswa mhs) {
         PreparedStatement st = null;
-        String sql = "INSERT INTO tb_daftar VALUE (?, ?, ?, ?)";
+        String sql = "INSERT INTO tb_daftar VALUE (?, ?, ?, ?, ?)";
         try {
             st = conn.prepareStatement(sql);
             st.setString(1, mhs.getNim());
             st.setString(2, mhs.getNama());
             st.setString(3, mhs.getJurusan());
             st.setString(4, mhs.getJudul());
+            st.setString(5, mhs.getStatus());
             st.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(QueryMhs.class.getName()).log(Level.SEVERE, null, ex);
@@ -49,13 +50,14 @@ public class QueryMhs implements iMahasiswa {
     @Override
     public void updateMhs(Mahasiswa mhs) {
         PreparedStatement st = null;
-        String sql = "UPDATE tb_daftar SET nama=?, jurusan=?, judul=? WHERE nim=?";
+        String sql = "UPDATE tb_daftar SET nama=?, jurusan=?, judul=?, status=? WHERE nim=?";
         try {
             st = conn.prepareStatement(sql);
             st.setString(1, mhs.getNama());
             st.setString(2, mhs.getJurusan());
             st.setString(3, mhs.getJudul());
-            st.setString(4, mhs.getNim());
+            st.setString(4, mhs.getStatus());
+            st.setString(5, mhs.getNim());
             st.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(QueryMhs.class.getName()).log(Level.SEVERE, null, ex);
@@ -149,6 +151,7 @@ public class QueryMhs implements iMahasiswa {
                 mhs.setNama(rs.getString("nama"));
                 mhs.setJurusan(rs.getString("jurusan"));
                 mhs.setJudul(rs.getString("judul"));
+                mhs.setStatus(rs.getString("status"));
                 list.add(mhs);
             }
             return list;

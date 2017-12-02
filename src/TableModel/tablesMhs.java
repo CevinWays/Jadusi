@@ -20,7 +20,7 @@ public class tablesMhs extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return 5;
     }
 
     @Override
@@ -34,6 +34,8 @@ public class tablesMhs extends AbstractTableModel {
                 return list.get(rowIndex).getJurusan();
             case 3:
                 return list.get(rowIndex).getJudul();
+            case 4:
+                return list.get(rowIndex).getStatus();
             default:
                 return null;
         }
@@ -50,6 +52,8 @@ public class tablesMhs extends AbstractTableModel {
                 return "jurusan";
             case 3:
                 return "judul";
+            case 4:
+                return "status";
             default:
                 return null;
         }
