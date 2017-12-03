@@ -1,5 +1,6 @@
 package form;
 
+import Class.DosenKbk;
 import javax.swing.JOptionPane;
 
 public class LoginKbk extends javax.swing.JFrame {
@@ -93,13 +94,15 @@ public class LoginKbk extends javax.swing.JFrame {
 
     private void ButtoMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtoMasukActionPerformed
         // TODO add your handling code here:
-        String user = "admin";
-        String pass = "1234";
+        DosenKbk dosen = new DosenKbk();
+        dosen.setUsername("admin");
+        dosen.setPassword("1234");
         String username = txt_username.getText();
         String password = txt_password.getText();
 
-        if (username.equals(user) && password.equals(pass)) {
+        if (username.equals(dosen.getUsername()) && password.equals(dosen.getPassword())) {
             JOptionPane.showMessageDialog(null, "Selamat Datang kbk");
+            dispose();
             FormKbk l_kbk = new FormKbk();
             l_kbk.setVisible(true);
         } else {

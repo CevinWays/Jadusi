@@ -3,7 +3,6 @@ package Class;
 public class DosenKbk extends Manusia {
 
     private String username;
-    private String password;
 
     public void setUsername(String username) {
         this.username = username;
@@ -15,13 +14,12 @@ public class DosenKbk extends Manusia {
 
     @Override
     public void setPassword(String password) {
-        this.password = password;
+        super.setPassword(password); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public String getPassword() {
-        return password;
+        return super.getPassword(); //To change body of generated methods, choose Tools | Templates.
     }
-    
     
 }
