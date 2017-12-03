@@ -26,7 +26,7 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="67" max="32767" attributes="0"/>
+              <EmptySpace pref="65" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -63,7 +63,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="ButtoMasuk" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txt_nid" max="32767" attributes="0"/>
+                          <Component id="txt_username" max="32767" attributes="0"/>
                           <Component id="txt_password" pref="182" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -77,7 +77,7 @@
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txt_nid" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_username" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -94,7 +94,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="NID"/>
+            <Property name="text" type="java.lang.String" value="Username"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -102,7 +102,7 @@
             <Property name="text" type="java.lang.String" value="Password"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txt_nid">
+        <Component class="javax.swing.JTextField" name="txt_username">
         </Component>
         <Component class="javax.swing.JPasswordField" name="txt_password">
         </Component>

@@ -2,13 +2,26 @@ package Class;
 
 public class DosenKbk extends Manusia {
 
-    private String nid;
+    private String username;
+    private String password;
 
-    public void setNid(String nid) {
-        this.nid = nid;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getNid() {
-        return nid;
+    public String getUsername() {
+        return username;
     }
+
+    @Override
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+    
+    
 }

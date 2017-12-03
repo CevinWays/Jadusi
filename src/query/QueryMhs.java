@@ -14,10 +14,10 @@ import java.util.logging.Logger;
 
 public class QueryMhs implements iMahasiswa {
 
-    private Connection conn;
+    private Connection conn;//java.sql.Connection
 
     public QueryMhs() {
-        conn = Koneksi.getConnection();
+        conn = Koneksi.getConnection();//panggil config.Koneksi
     }
 
     //insert data

@@ -2,8 +2,6 @@ package form;
 
 import Class.Mahasiswa;
 import Interface.iMahasiswa;
-import config.Koneksi;
-import java.sql.Connection;
 import javax.swing.JOptionPane;
 import query.QueryMhs;
 import TableModel.tablesMhs;
@@ -13,11 +11,10 @@ public class FormMahasiswa extends javax.swing.JFrame {
 
     private iMahasiswa mahasis = new QueryMhs();
     private tablesMhs tablemhs = new tablesMhs();
-    private FormMahasiswa mhs;
 
     public FormMahasiswa() {
         initComponents();
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(null); //lokasi window saat dibuka
         loadtable();
         jTable1.setModel(tablemhs);
 
@@ -234,14 +231,14 @@ public class FormMahasiswa extends javax.swing.JFrame {
             String jurusan = jComboBox1.getSelectedItem().toString();
             String judul = txt_judul.getText();
             
-            Mahasiswa mhs = new Mahasiswa();
-            mhs.setNim(nim);
-            mhs.setNama(nama);
-            mhs.setJurusan(jurusan);
-            mhs.setJudul(judul);
-            mhs.setStatus("Unapproved");
-            mahasis.insertMhs(mhs);
-            tablemhs.insertMhs(mhs);
+            Mahasiswa mahs = new Mahasiswa();
+            mahs.setNim(nim);
+            mahs.setNama(nama);
+            mahs.setJurusan(jurusan);
+            mahs.setJudul(judul);
+            mahs.setStatus("Unapproved");
+            mahasis.insertMhs(mahs);
+            tablemhs.insertMhs(mahs);
             loadtable();
             resetForm();
         }
@@ -253,22 +250,22 @@ public class FormMahasiswa extends javax.swing.JFrame {
         //Edit data tabel mhs
         int index = jTable1.getSelectedRow();
         if (index != -1) {
-            Mahasiswa mhs = tablemhs.getMhs(jTable1.convertRowIndexToModel(index));
+            Mahasiswa mahs = tablemhs.getMhs(jTable1.convertRowIndexToModel(index));
             if (validasiInput() == true) {
                 String nim = txt_nim.getText();
                 String nama = txt_nama.getText();
                 String jurusan = jComboBox1.getSelectedItem().toString();
                 String judul = txt_judul.getText();
-                String status = mhs.getStatus();
+                String status = mahs.getStatus(); //ambil status yang telah dimanipulasi
 
-                mhs.setNim(nim);
-                mhs.setNama(nama);
-                mhs.setJurusan(jurusan);
-                mhs.setJudul(judul);
-                mhs.setStatus(status);
+                mahs.setNim(nim);
+                mahs.setNama(nama);
+                mahs.setJurusan(jurusan);
+                mahs.setJudul(judul);
+                mahs.setStatus(status);
 
-                mahasis.updateMhs(mhs);
-                tablemhs.updateMhs(index, mhs);
+                mahasis.updateMhs(mahs);
+                tablemhs.updateMhs(index, mahs);
                 resetForm();
                 loadtable();
             }
@@ -282,9 +279,9 @@ public class FormMahasiswa extends javax.swing.JFrame {
         //hapus data pada tabel di java dan mysql
         int index = jTable1.getSelectedRow();
         if (index!=-1) {
-            Mahasiswa mhs = tablemhs.getMhs(jTable1.convertRowIndexToModel(index));
+            Mahasiswa mahs = tablemhs.getMhs(jTable1.convertRowIndexToModel(index));
             if (JOptionPane.showConfirmDialog(null, "Apakah Yakin Di Hapus?","konfirmasi", JOptionPane.OK_CANCEL_OPTION)== JOptionPane.OK_OPTION) {
-                mahasis.deleteMhs(mhs);
+                mahasis.deleteMhs(mahs);
                 tablemhs.deleteMhs(index);
                 loadtable();
             }
@@ -298,11 +295,11 @@ public class FormMahasiswa extends javax.swing.JFrame {
         //ambil data
         int index=jTable1.getSelectedRow();
         if(index!=-1){
-            Mahasiswa mhs = tablemhs.getMhs(jTable1.convertRowIndexToModel(index));
-            txt_nim.setText(mhs.getNim());
-            txt_nama.setText(mhs.getNama());
+            Mahasiswa mahs = tablemhs.getMhs(jTable1.convertRowIndexToModel(index));
+            txt_nim.setText(mahs.getNim());
+            txt_nama.setText(mahs.getNama());
             jComboBox1.setSelectedItem(this);
-            txt_judul.setText(mhs.getJudul());
+            txt_judul.setText(mahs.getJudul());
         }else{
             JOptionPane.showMessageDialog(null, "seleksi salah satu baris!");
         }
@@ -333,23 +330,18 @@ public class FormMahasiswa extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FormMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
+        
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FormMahasiswa().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new FormMahasiswa().setVisible(true);
         });
     }
 
