@@ -1,5 +1,6 @@
 package form;
 
+import Class.Mahasiswa;
 import config.Koneksi;
 import java.awt.HeadlessException;
 import java.sql.Connection;
@@ -114,14 +115,16 @@ public class LoginMhs extends javax.swing.JFrame {
         try {
             String nim = txt_nim.getText();
             String password = txt_password.getText();
-
+            Mahasiswa mahas = new Mahasiswa();
+            mahas.setNim(nim);
+            mahas.setPassword(password);
             String sql = "SELECT * FROM tb_mhs WHERE nim='" + txt_nim.getText() + "'AND password='"
                     + txt_password.getText() + "'"; //cek apakah data nim dan password sesuai
             java.sql.Connection koneksi = (Connection) Koneksi.getConnection();
             java.sql.Statement stm = koneksi.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);
             if (res.next()) {
-                if (nim.equals(res.getString("nim")) && password.equals(res.getString("password"))) {
+                if (mahas.getNim().equals(res.getString("nim")) && mahas.getPassword().equals(res.getString("password"))) { //jika username dan password cocok dengan data yang ada pada tabel database
                     JOptionPane.showMessageDialog(null, "Selamat Datang");
                     FormMahasiswa l_mhs = new FormMahasiswa();
                     l_mhs.setVisible(true);
