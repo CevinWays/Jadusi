@@ -6,7 +6,6 @@ public class Mahasiswa extends Manusia {
     private String jurusan;
     private String judul;
     private String status;
-    private String password;
 
     public void setNim(String nim) {
         this.nim = nim;

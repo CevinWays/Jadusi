@@ -253,10 +253,9 @@ public class FormKbk extends javax.swing.JFrame {
 
     private void ButtonKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonKeluarActionPerformed
         // TODO add your handling code here:
-        LoginKbk login_kbk = new LoginKbk();
-        FormKbk form_kbk = new FormKbk();
-        login_kbk.setVisible(true);
-        form_kbk.setVisible(false);
+        dispose(); // exit
+        LoginKbk login = new LoginKbk();
+        login.setVisible(true);
     }//GEN-LAST:event_ButtonKeluarActionPerformed
 
     private void loadtable() {

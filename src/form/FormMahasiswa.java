@@ -331,10 +331,9 @@ public class FormMahasiswa extends javax.swing.JFrame {
 
     private void ButtonKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonKeluarActionPerformed
         // TODO add your handling code here:
-        LoginMhs login_mhs = new LoginMhs();
-        FormMahasiswa form_mhs = new FormMahasiswa();
-        login_mhs.setVisible(true);
-        form_mhs.setVisible(false);
+        dispose();
+        LoginMhs login = new LoginMhs();
+        login.setVisible(true);
     }//GEN-LAST:event_ButtonKeluarActionPerformed
 
     /**

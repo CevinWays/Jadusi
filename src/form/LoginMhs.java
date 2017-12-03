@@ -1,7 +1,9 @@
 package form;
 
 import config.Koneksi;
+import java.awt.HeadlessException;
 import java.sql.Connection;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class LoginMhs extends javax.swing.JFrame {
@@ -127,7 +129,7 @@ public class LoginMhs extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Username atau Password Salah");
             }
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_ButtonMasukActionPerformed
