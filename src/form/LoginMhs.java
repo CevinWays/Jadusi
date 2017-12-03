@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package form;
 
 import config.Koneksi;
@@ -19,7 +14,6 @@ public class LoginMhs extends javax.swing.JFrame {
         setLocationRelativeTo(null); //lokasi window saat dibuka
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -29,7 +23,7 @@ public class LoginMhs extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txt_nim = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        ButtonMasuk = new javax.swing.JButton();
         txt_password = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,10 +40,10 @@ public class LoginMhs extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Masuk");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ButtonMasuk.setText("Masuk");
+        ButtonMasuk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ButtonMasukActionPerformed(evt);
             }
         });
 
@@ -68,7 +62,7 @@ public class LoginMhs extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 28, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
+                            .addComponent(ButtonMasuk)
                             .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
@@ -84,7 +78,7 @@ public class LoginMhs extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addComponent(jButton1))
+                .addComponent(ButtonMasuk))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -113,16 +107,19 @@ public class LoginMhs extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ButtonMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMasukActionPerformed
         // TODO add your handling code here:
         try {
+            String nim = txt_nim.getText();
+            String password = txt_password.getText();
+
             String sql = "SELECT * FROM tb_mhs WHERE nim='" + txt_nim.getText() + "'AND password='"
-            + txt_password.getText() + "'"; //cek apakah data nim dan password sesuai
+                    + txt_password.getText() + "'"; //cek apakah data nim dan password sesuai
             java.sql.Connection koneksi = (Connection) Koneksi.getConnection();
             java.sql.Statement stm = koneksi.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);
             if (res.next()) {
-                if(txt_nim.getText().equals(res.getString("nim")) && txt_password.getText().equals(res.getString("password"))){
+                if (nim.equals(res.getString("nim")) && password.equals(res.getString("password"))) {
                     JOptionPane.showMessageDialog(null, "Selamat Datang");
                     FormMahasiswa l_mhs = new FormMahasiswa();
                     l_mhs.setVisible(true);
@@ -133,7 +130,7 @@ public class LoginMhs extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ButtonMasukActionPerformed
 
     private void txt_nimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nimActionPerformed
         // TODO add your handling code here:
@@ -168,15 +165,13 @@ public class LoginMhs extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginMhs().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new LoginMhs().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton ButtonMasuk;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

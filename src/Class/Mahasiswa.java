@@ -1,12 +1,12 @@
-
 package Class;
 
-public class Mahasiswa extends Manusia{
+public class Mahasiswa extends Manusia {
+
     private String nim;
-    private String kelas;
     private String jurusan;
     private String judul;
     private String status;
+    private String password;
 
     public void setNim(String nim) {
         this.nim = nim;
@@ -14,14 +14,6 @@ public class Mahasiswa extends Manusia{
 
     public String getNim() {
         return nim;
-    }
-
-    public void setKelas(String kelas) {
-        this.kelas = kelas;
-    }
-
-    public String getKelas() {
-        return kelas;
     }
 
     public void setJurusan(String jurusan) {
@@ -39,7 +31,7 @@ public class Mahasiswa extends Manusia{
     public String getJudul() {
         return judul;
     }
-    
+
     public void setStatus(String status) {
         this.status = status;
     }
@@ -47,5 +39,15 @@ public class Mahasiswa extends Manusia{
     public String getStatus() {
         return status;
     }
-    
+
+    @Override
+    public void setPassword(String password) {
+        super.setPassword(password); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getPassword() {
+        return super.getPassword(); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

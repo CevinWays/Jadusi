@@ -3,6 +3,7 @@ package form;
 import javax.swing.JOptionPane;
 
 public class LoginKbk extends javax.swing.JFrame {
+
     /**
      * Creates new form LoginKbk
      */
@@ -10,7 +11,7 @@ public class LoginKbk extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null); //lokasi window saat dibuka
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -92,11 +93,11 @@ public class LoginKbk extends javax.swing.JFrame {
 
     private void ButtoMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtoMasukActionPerformed
         // TODO add your handling code here:
-        String user="admin";
-        String pass="1234";
+        String user = "admin";
+        String pass = "1234";
         String username = txt_username.getText();
         String password = txt_password.getText();
-        
+
         if (username.equals(user) && password.equals(pass)) {
             JOptionPane.showMessageDialog(null, "Selamat Datang kbk");
             FormKbk l_kbk = new FormKbk();
@@ -123,29 +124,18 @@ public class LoginKbk extends javax.swing.JFrame {
 
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(LoginKbk.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginKbk.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginKbk.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginKbk.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
+        //</editor-fold>
+
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginKbk().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new LoginKbk().setVisible(true);
         });
     }
 

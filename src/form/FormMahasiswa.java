@@ -62,6 +62,7 @@ public class FormMahasiswa extends javax.swing.JFrame {
         ButtonAmbil = new javax.swing.JButton();
         ButtonUbah = new javax.swing.JButton();
         ButtonRefresh = new javax.swing.JButton();
+        ButtonKeluar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -182,31 +183,45 @@ public class FormMahasiswa extends javax.swing.JFrame {
             }
         });
 
+        ButtonKeluar.setText("Keluar");
+        ButtonKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonKeluarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(ButtonUbah)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ButtonHapus)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ButtonAmbil)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ButtonRefresh)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ButtonUbah)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ButtonHapus)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ButtonAmbil)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ButtonRefresh)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(ButtonKeluar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(8, 8, 8)
+                .addComponent(ButtonKeluar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -230,7 +245,7 @@ public class FormMahasiswa extends javax.swing.JFrame {
             String nama = txt_nama.getText();
             String jurusan = jComboBox1.getSelectedItem().toString();
             String judul = txt_judul.getText();
-            
+
             Mahasiswa mahs = new Mahasiswa();
             mahs.setNim(nim);
             mahs.setNama(nama);
@@ -278,14 +293,14 @@ public class FormMahasiswa extends javax.swing.JFrame {
         // TODO add your handling code here:
         //hapus data pada tabel di java dan mysql
         int index = jTable1.getSelectedRow();
-        if (index!=-1) {
+        if (index != -1) {
             Mahasiswa mahs = tablemhs.getMhs(jTable1.convertRowIndexToModel(index));
-            if (JOptionPane.showConfirmDialog(null, "Apakah Yakin Di Hapus?","konfirmasi", JOptionPane.OK_CANCEL_OPTION)== JOptionPane.OK_OPTION) {
+            if (JOptionPane.showConfirmDialog(null, "Apakah Yakin Di Hapus?", "konfirmasi", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
                 mahasis.deleteMhs(mahs);
                 tablemhs.deleteMhs(index);
                 loadtable();
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Seleksi Salah satu baris!!");
         }
     }//GEN-LAST:event_ButtonHapusActionPerformed
@@ -293,14 +308,14 @@ public class FormMahasiswa extends javax.swing.JFrame {
     private void ButtonAmbilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAmbilActionPerformed
         // TODO add your handling code here:
         //ambil data
-        int index=jTable1.getSelectedRow();
-        if(index!=-1){
+        int index = jTable1.getSelectedRow();
+        if (index != -1) {
             Mahasiswa mahs = tablemhs.getMhs(jTable1.convertRowIndexToModel(index));
             txt_nim.setText(mahs.getNim());
             txt_nama.setText(mahs.getNama());
             jComboBox1.setSelectedItem(this);
             txt_judul.setText(mahs.getJudul());
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "seleksi salah satu baris!");
         }
     }//GEN-LAST:event_ButtonAmbilActionPerformed
@@ -313,6 +328,14 @@ public class FormMahasiswa extends javax.swing.JFrame {
         // TODO add your handling code here:
         resetForm();
     }//GEN-LAST:event_ButtonRefreshActionPerformed
+
+    private void ButtonKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonKeluarActionPerformed
+        // TODO add your handling code here:
+        LoginMhs login_mhs = new LoginMhs();
+        FormMahasiswa form_mhs = new FormMahasiswa();
+        login_mhs.setVisible(true);
+        form_mhs.setVisible(false);
+    }//GEN-LAST:event_ButtonKeluarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -335,7 +358,7 @@ public class FormMahasiswa extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        
+
         //</editor-fold>
         //</editor-fold>
 
@@ -348,6 +371,7 @@ public class FormMahasiswa extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonAmbil;
     private javax.swing.JButton ButtonHapus;
+    private javax.swing.JButton ButtonKeluar;
     private javax.swing.JButton ButtonRefresh;
     private javax.swing.JButton ButtonTambah;
     private javax.swing.JButton ButtonUbah;

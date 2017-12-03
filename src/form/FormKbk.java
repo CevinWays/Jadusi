@@ -21,7 +21,7 @@ public class FormKbk extends javax.swing.JFrame {
     private iMahasiswa mahasis = new QueryMhs();
     private tablesMhs tablemhs = new tablesMhs();
     private FormMahasiswa mhs;
-    
+
     public FormKbk() {
         initComponents();
         setLocationRelativeTo(null);
@@ -29,12 +29,13 @@ public class FormKbk extends javax.swing.JFrame {
         table.setModel(tablemhs);
     }
 
-   private void resetForm() {
+    private void resetForm() {
         txt_nim.setText(null);
         txt_name.setText(null);
         txt_jurusan.setText(null);
         txt_judul.setText(null);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,6 +60,7 @@ public class FormKbk extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         btn_ambil = new javax.swing.JButton();
+        ButtonKeluar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -168,6 +170,13 @@ public class FormKbk extends javax.swing.JFrame {
             }
         });
 
+        ButtonKeluar.setText("Keluar");
+        ButtonKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonKeluarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -176,19 +185,23 @@ public class FormKbk extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(btn_ambil, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane1)
+                        .addComponent(btn_ambil, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ButtonKeluar, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
+                        .addGap(20, 20, 20)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ButtonKeluar)
+                        .addGap(4, 4, 4)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_ambil)))
@@ -199,14 +212,14 @@ public class FormKbk extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_ambilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ambilActionPerformed
-        int index=table.getSelectedRow();
-        if(index!=-1){
+        int index = table.getSelectedRow();
+        if (index != -1) {
             Mahasiswa mhs = tablemhs.getMhs(table.convertRowIndexToModel(index));
             txt_nim.setText(mhs.getNim());
             txt_name.setText(mhs.getNama());
             txt_jurusan.setText(mhs.getJurusan());
             txt_judul.setText(mhs.getJudul());
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "seleksi salah satu baris!");
         }
     }//GEN-LAST:event_btn_ambilActionPerformed
@@ -238,16 +251,24 @@ public class FormKbk extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_updateActionPerformed
 
+    private void ButtonKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonKeluarActionPerformed
+        // TODO add your handling code here:
+        LoginKbk login_kbk = new LoginKbk();
+        FormKbk form_kbk = new FormKbk();
+        login_kbk.setVisible(true);
+        form_kbk.setVisible(false);
+    }//GEN-LAST:event_ButtonKeluarActionPerformed
+
     private void loadtable() {
         List<Mahasiswa> mahasiswa = mahasis.getmhsMahasiswa();
         tablemhs.setData(mahasiswa);
     }
-    
+
     private boolean validasiInput() {
         boolean valid = false;
-        
+
         String status = combo_status.getSelectedItem().toString();
-        
+
         if (status.isEmpty()) {
             JOptionPane.showMessageDialog(null, "status tidak boleh kosong");
         } else {
@@ -255,7 +276,7 @@ public class FormKbk extends javax.swing.JFrame {
         }
         return valid;
     }
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -287,10 +308,11 @@ public class FormKbk extends javax.swing.JFrame {
                 new FormKbk().setVisible(true);
             }
         });
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonKeluar;
     private javax.swing.JButton btn_ambil;
     private javax.swing.JButton btn_update;
     private javax.swing.JComboBox<String> combo_status;
