@@ -63,8 +63,6 @@ public class FormMahasiswa extends javax.swing.JFrame {
         ButtonUbah = new javax.swing.JButton();
         ButtonRefresh = new javax.swing.JButton();
         ButtonKeluar = new javax.swing.JButton();
-        Txt_cari = new javax.swing.JTextField();
-        ButtonCari = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -192,13 +190,6 @@ public class FormMahasiswa extends javax.swing.JFrame {
             }
         });
 
-        ButtonCari.setText("Cari");
-        ButtonCari.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonCariActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -215,19 +206,13 @@ public class FormMahasiswa extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(ButtonUbah)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(ButtonHapus)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(ButtonAmbil)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(ButtonRefresh))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(Txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(ButtonCari)))
+                                .addComponent(ButtonUbah)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ButtonHapus)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ButtonAmbil)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ButtonRefresh)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
@@ -246,11 +231,7 @@ public class FormMahasiswa extends javax.swing.JFrame {
                     .addComponent(ButtonHapus)
                     .addComponent(ButtonAmbil)
                     .addComponent(ButtonRefresh))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ButtonCari))
-                .addGap(68, 68, 68))
+                .addGap(117, 117, 117))
         );
 
         pack();
@@ -355,10 +336,6 @@ public class FormMahasiswa extends javax.swing.JFrame {
         main.setVisible(true);
     }//GEN-LAST:event_ButtonKeluarActionPerformed
 
-    private void ButtonCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCariActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonCariActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -392,13 +369,11 @@ public class FormMahasiswa extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonAmbil;
-    private javax.swing.JButton ButtonCari;
     private javax.swing.JButton ButtonHapus;
     private javax.swing.JButton ButtonKeluar;
     private javax.swing.JButton ButtonRefresh;
     private javax.swing.JButton ButtonTambah;
     private javax.swing.JButton ButtonUbah;
-    private javax.swing.JTextField Txt_cari;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
