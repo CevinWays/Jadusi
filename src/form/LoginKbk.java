@@ -23,7 +23,7 @@ public class LoginKbk extends javax.swing.JFrame {
         txt_username = new javax.swing.JTextField();
         txt_password = new javax.swing.JPasswordField();
         ButtoMasuk = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        ButtonKeluar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,10 +73,10 @@ public class LoginKbk extends javax.swing.JFrame {
                 .addContainerGap(57, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Kembali");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ButtonKeluar.setText("Kembali");
+        ButtonKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ButtonKeluarActionPerformed(evt);
             }
         });
 
@@ -89,7 +89,7 @@ public class LoginKbk extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(65, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1)
+                .addComponent(ButtonKeluar)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -98,7 +98,7 @@ public class LoginKbk extends javax.swing.JFrame {
                 .addContainerGap(64, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
-                .addComponent(jButton1)
+                .addComponent(ButtonKeluar)
                 .addContainerGap())
         );
 
@@ -107,7 +107,7 @@ public class LoginKbk extends javax.swing.JFrame {
 
     private void ButtoMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtoMasukActionPerformed
         // TODO add your handling code here:
-        DosenKbk dosen = new DosenKbk();
+        DosenKbk dosen = new DosenKbk();//object baru 
         dosen.setUsername("admin");
         dosen.setPassword("1234");
         String username = txt_username.getText();
@@ -119,16 +119,16 @@ public class LoginKbk extends javax.swing.JFrame {
             FormKbk l_kbk = new FormKbk();
             l_kbk.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(null, "Username atau Password Salah");
+            JOptionPane.showMessageDialog(null, "Maaf Username atau Password Salah");
         }
     }//GEN-LAST:event_ButtoMasukActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ButtonKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonKeluarActionPerformed
         // TODO add your handling code here:
         dispose();
         FormMain main = new FormMain();
         main.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ButtonKeluarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,7 +164,7 @@ public class LoginKbk extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtoMasuk;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton ButtonKeluar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
