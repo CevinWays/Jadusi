@@ -45,15 +45,15 @@ public class tablesMhs extends AbstractTableModel {
     public String getColumnName(int column) {
         switch (column) {
             case 0:
-                return "nim";
+                return "NIM";
             case 1:
-                return "nama";
+                return "Nama";
             case 2:
-                return "jurusan";
+                return "Jurusan";
             case 3:
-                return "judul";
+                return "Judul";
             case 4:
-                return "status";
+                return "Status";
             default:
                 return null;
         }
